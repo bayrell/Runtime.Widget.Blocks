@@ -1,0 +1,25 @@
+{
+	"name": "Runtime.Widget.Blocks.Gallery",
+	"assets":
+	[
+		"Gallery.bay",
+		"GalleryDialog.bay",
+		"GalleryDialogModel.bay"
+	],
+	"require": [
+		"Runtime.Widget.Dialog"
+	],
+	"groups": [
+		"widget"
+	],
+	"src": "./",
+	"dest":
+	{
+		"php": "./../../php/Gallery",
+		"es6": "./../../es6/Gallery"
+	},
+	"allow":
+	[
+		"\\.bay$"
+	]
+}

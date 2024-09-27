@@ -1,0 +1,23 @@
+{
+	"name": "Runtime.Widget.Blocks.Menu",
+	"assets":
+	[
+		"Menu.bay"
+	],
+	"require": [
+		"Runtime.Widget"
+	],
+	"groups": [
+		"widget"
+	],
+	"src": "./",
+	"dest":
+	{
+		"php": "./../../php/Menu",
+		"es6": "./../../es6/Menu"
+	},
+	"allow":
+	[
+		"\\.bay$"
+	]
+}

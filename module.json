@@ -1,0 +1,41 @@
+{
+	"name": "Runtime.Widget.Blocks",
+	"assets": [],
+	"require": [
+		"Runtime.Widget"
+	],
+	"groups": [
+		"widget"
+	],
+	"modules":
+	[
+		{
+			"src": "bay/Gallery",
+			"type": "module"
+		},
+		{
+			"src": "bay/Menu",
+			"type": "module"
+		},
+		{
+			"src": "bay/WidgetSettings",
+			"type": "module"
+		}
+	],
+	"src": "./bay",
+	"dest":
+	{
+		"php": "./php",
+		"es6": "./es6"
+	},
+	"allow":
+	[
+		"\\.bay$",
+		"\\.php$",
+		"\\.js$"
+	],
+	"exclude":
+	[
+		"Gallery/"
+	]
+}

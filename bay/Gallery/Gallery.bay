@@ -1,0 +1,95 @@
+<!--
+ *  BayLang Technology
+ *
+ *  (c) Copyright 2016-2024 "Ildar Bikmamatov" <support@bayrell.org>
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+-->
+
+<class name="Runtime.Widget.Blocks.Gallery.Gallery">
+
+<use name="Runtime.Widget.Blocks.Gallery.GalleryDialog" component="true" />
+<use name="Runtime.Widget.Blocks.Gallery.GalleryDialogModel" />
+
+
+<style>
+.widget_gallery__items{
+	display: flex;
+	align-items: center;
+    justify-content: space-around;
+	flex-wrap: wrap;
+}
+</style>
+
+
+<template name="renderItem" args="int pos">
+	%set string component = this.component;
+	<{component}
+		item={{ this.items.get(pos) }}
+		@event:click={{ void () use (pos){ this.onClick(pos); } }}
+	/>
+</template>
+
+
+<template>
+	<div class="widget_gallery" class={{ this.class }}>
+		<div class="widget_gallery__items">
+			%for (int i=0; i<this.items.count(); i++)
+			{
+				%render this.renderItem(i);
+			}
+		</div>
+		%render this.renderWidget(this.dialog);
+	</div>
+</template>
+
+
+<script>
+
+/* Items */
+props string items = "";
+props bool big_image_contain = false;
+props string component = "";
+
+
+/* Dialog */
+GalleryDialogModel dialog = new GalleryDialogModel{
+	"modal": false,
+};
+
+
+/**
+ * On mounted
+ */
+void onMounted()
+{
+	this.dialog.big_image_contain = this.big_image_contain;
+}
+
+
+/**
+ * On click
+ */
+void onClick(int pos)
+{
+	Dict item = this.items.get(pos);
+	this.dialog.items = this.items.slice();
+	this.dialog.select(pos);
+	this.dialog.show();
+}
+
+
+</script>
+
+
+</class>
